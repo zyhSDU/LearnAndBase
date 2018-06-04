@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:layout_height="fill_parent">
+
+    <LinearLayout 
+        android:paddingRight="20dip"
+        android:paddingLeft="20dip"
+        android:paddingTop="20dip"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        
+        <Button 
+            android:id="@+id/but_0"
+            android:text="进度框"
+            android:textSize="14sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+        
+        <Button 
+            android:id="@+id/but_1"
+            android:text="Toast框"
+            android:textSize="14sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+      
+    </LinearLayout>
+
+	<LinearLayout 
+	    android:paddingLeft="20dip"
+	    android:paddingRight="20dip"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content">
+	    
+	    <Button 
+	        android:id="@+id/but_2"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	        android:text="弹出框(上)"
+	        android:textSize="14sp"
+	        android:layout_height="wrap_content"/>
+	    
+	    <Button 
+	        android:id="@+id/but_3"
+	        android:layout_width="0dip"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:textSize="14sp"
+	        android:text="弹出框(中)"/>
+	    
+	    <Button 
+	        android:id="@+id/but_4"
+	        android:layout_width="0dip"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:textSize="14sp"
+	        android:text="弹出框(下)"/>
+	</LinearLayout>
+        
+    <LinearLayout 
+        android:paddingLeft="20dip"
+	    android:paddingRight="20dip"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        
+        <Button 
+            android:id="@+id/but_5"
+            android:text="确认框"
+            android:textSize="14sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>  
+    
+</LinearLayout>
