@@ -15,7 +15,7 @@ abstract class BaseActivity : AbActivity(), UiOperation {
         get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        requestWindowFeature(Window.FEATURE_NO_TITLE)//我我我我我
+//        requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
         setAbContentView(layoutResId)
         initPermission()
