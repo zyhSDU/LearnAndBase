@@ -20,6 +20,7 @@ import com.ab.task.AbTaskListener
             101.get()		//任务执行，一般用来进行耗时操作
     2.载体.execute(item)
  */
+
 object AbTaskItemHelper {
     fun getAbTaskItem(abTaskListener: AbTaskListener): AbTaskItem {
         val abTaskItem = AbTaskItem()

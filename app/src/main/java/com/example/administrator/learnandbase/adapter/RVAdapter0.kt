@@ -3,7 +3,7 @@ package com.example.administrator.learnandbase.adapter
 import android.content.Context
 import android.widget.Button
 import com.example.administrator.learnandbase.R
-import com.example.administrator.learnandbase.ac.LearnAbActivity0
+import com.example.administrator.learnandbase.ac.LearnAbAc0
 
 import kotlin.collections.ArrayList
 
@@ -18,7 +18,7 @@ class RVAdapter0(context: Context, arrayList: List<Any>) : BaseRVAdapter(context
     override val arrOfResId: ArrayList<Int>
         get() = arrayListOf(R.id.btn_item_view)
 
-    private val learnAbActivity0 = context as LearnAbActivity0
+    private val learnAbActivity0 = context as LearnAbAc0
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val string = arrOfData[position] as String
