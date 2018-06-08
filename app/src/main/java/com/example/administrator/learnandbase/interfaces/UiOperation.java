@@ -5,13 +5,13 @@ import android.view.View.OnClickListener;
 
 public interface UiOperation extends OnClickListener {
 
-	int getLayoutResId();
+    int getLayoutResId();
 
-	void initView();
+    void initData();
 
-	void initListener();
+    void initView();
 
-	void initData();
+    void initListener();
 
-	void onClick(View v, int id);
+    void onClick(View v, int id);
 }
