@@ -19,7 +19,12 @@ class LearnAbAcMain : BaseAbAc() {
 
     }
 
-    val arrayOfClasss = arrayOf(LearnAbAc0::class.java, LearnAbAc1::class.java, LearnAbAc2::class.java).map { it }
+    val arrayOfClasss = arrayOf(
+            LearnAbAc0::class.java,
+            LearnAbAc1::class.java,
+            LearnAbAc2::class.java,
+            LearnAbAc3::class.java
+    ).map { it }
 
     override fun initView() {
         RecyclerViewHelper.initVerticalLinearRecyclerView(rv, self, RVAdapter3(self, arrayOfClasss))

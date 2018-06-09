@@ -47,10 +47,7 @@ object AbTaskItemHelper {
 
     fun executeNullAbTaskItemLast(millis: Long = 1000, update: () -> Unit = {}) {
         execute(update, get = {
-            try {
-                Thread.sleep(millis)
-            } catch (e: Exception) {
-            }
+            Thread.sleep(millis)
         })
     }
 }
