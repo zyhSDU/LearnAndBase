@@ -16,36 +16,36 @@ import com.example.administrator.learnandbase.util.AbTaskItemHelper
 
 class LearnAbAc0 : BaseAbAc() {
     var abTaskPool = AbTaskPool.getInstance()!!
-    val abTaskItemHideAbTitleBar = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    val abTaskItemHideAbTitleBar = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.hideAbTitleBar(mAbTitleBar)
-    }
-    val abTaskItemShowAbTitleBar = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    })
+    val abTaskItemShowAbTitleBar = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.showAbTitleBar(mAbTitleBar)
-    }
-    val abTaskItemHideRightPartOfAbTitleBar = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    })
+    val abTaskItemHideRightPartOfAbTitleBar = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.hideRightPartOfAbTitleBar(mAbTitleBar)
-    }
-    val abTaskItemShowRightPartOfAbTitleBar0 = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    })
+    val abTaskItemShowRightPartOfAbTitleBar0 = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.showRightPartOfAbTitleBar0(mAbTitleBar, self)
-    }
-    val abTaskItemChangeAbTitleBar = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    })
+    val abTaskItemChangeAbTitleBar = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.changeAbTitleBar(mAbTitleBar, self)
-    }
-    val abTaskItemTransparentBackgroundOfAbTitleBar = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    })
+    val abTaskItemTransparentBackgroundOfAbTitleBar = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.transparentBackgroundOfAbTitleBar(mAbTitleBar)
-    }
-    val abTaskItemHideDropDownOfAbTitleBar = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    })
+    val abTaskItemHideDropDownOfAbTitleBar = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.hideDropDownOfAbTitleBar(mAbTitleBar)
-    }
-    val abTaskItemShowDropDownOfAbTitleBar0 = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    })
+    val abTaskItemShowDropDownOfAbTitleBar0 = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.showDropDownOfAbTitleBar0(mAbTitleBar, self)
-    }
-    val abTaskItemHideAbBottomBar = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    })
+    val abTaskItemHideAbBottomBar = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.hideAbBottomBar(mAbBottomBar)
-    }
-    val abTaskItemShowAbBottomBar0 = AbTaskItemHelper.getAbTaskItemWithUpdateMethod {
+    })
+    val abTaskItemShowAbBottomBar0 = AbTaskItemHelper.getAbTaskItem(update = {
         AbTitleBarHelper.showAbBottomBar0(mAbBottomBar, self)
-    }
+    })
 
     private var arrOfStr = arrayListOf(
             "隐藏标题栏", "显示标题栏", "隐藏标题栏右侧", "显示标题栏右侧", "变换标题栏",

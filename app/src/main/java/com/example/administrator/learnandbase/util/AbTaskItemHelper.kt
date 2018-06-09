@@ -1,7 +1,6 @@
 package com.example.administrator.learnandbase.util
 
-import com.ab.task.AbTaskItem
-import com.ab.task.AbTaskListener
+import com.ab.task.*
 
 /**
  * Created by Administrator on 2018/6/2 0002.
@@ -22,19 +21,44 @@ import com.ab.task.AbTaskListener
  */
 
 object AbTaskItemHelper {
-    fun getAbTaskItem(abTaskListener: AbTaskListener): AbTaskItem {
-        val abTaskItem = AbTaskItem()
-        abTaskItem.listener = abTaskListener
-        return abTaskItem
+    val abTaskPool = AbTaskPool.getInstance()!!
+
+    fun getAbTaskItemExecutor(int: Int = 3): Any {
+        return when (int) {
+            0 -> AbThread()
+            1 -> AbTask()
+            2 -> AbTaskQueue()
+            else -> {
+                abTaskPool
+            }
+        }
     }
 
-    fun getAbTaskItemWithUpdateMethod(update: () -> Unit): AbTaskItem {
+    fun getAbTaskItem(update: () -> Unit = {}, get: () -> Unit={}): AbTaskItem {
         val abTaskItem = AbTaskItem()
         abTaskItem.listener = object : AbTaskListener() {
             override fun update() {
                 update()
             }
+
+            override fun get() {
+                get()
+            }
         }
         return abTaskItem
+    }
+
+    private fun execute(abTaskItem: AbTaskItem) {
+        abTaskPool.execute(abTaskItem)
+    }
+
+    fun executeNullAbTaskItemLast(millis: Long, update: () -> Unit = {}) {
+        execute(getAbTaskItem(update, get = {
+            try {
+                Thread.sleep(millis)
+                //.这里是任务执行的过程
+            } catch (e: Exception) {
+            }
+        }))
     }
 }

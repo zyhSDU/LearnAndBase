@@ -41,7 +41,7 @@ object AbTitleBarHelper {
     }
 
     @SuppressLint("InflateParams")
-    fun initAbTitleBar1(abTitleBar: AbTitleBar, abActivity: AbActivity) {
+    private fun initAbTitleBar1(abTitleBar: AbTitleBar, abActivity: AbActivity) {
         initAbTitleBar(
                 abTitleBar,
                 "正在修改",

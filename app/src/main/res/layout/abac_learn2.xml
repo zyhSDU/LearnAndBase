@@ -1,13 +1,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ac.LearnAbAc2">
+
+    <com.ab.view.pullview.AbPullView
+        android:id="@+id/mPullView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/colorAccent" />
 
     <TextView
+        android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/mPullView"
         android:text="Android 学习笔记之AndBase框架学习(五) 数据库ORM..注解，数据库对象映射..."
         android:textSize="20sp" />
+
+    <com.ab.view.pullview.AbPullListView
+        android:layout_below="@+id/tv"
+        android:id="@+id/mListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="1dip"
+        android:fastScrollEnabled="true"/>
 
 </RelativeLayout>
