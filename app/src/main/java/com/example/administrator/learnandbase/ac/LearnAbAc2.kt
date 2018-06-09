@@ -1,13 +1,13 @@
 package com.example.administrator.learnandbase.ac
 
 import android.view.View
-import android.widget.Toast
 import com.ab.global.AbMenuItem
 import com.ab.view.listener.AbOnListViewListener
 import com.example.administrator.learnandbase.R
 import com.example.administrator.learnandbase.adapter.LVAdapter0
 import com.example.administrator.learnandbase.bean.LocalUser
 import com.example.administrator.learnandbase.dao.LocalUserDao
+import com.example.administrator.learnandbase.util.AbPullListViewHelper
 import com.example.administrator.learnandbase.util.AbPullViewHelper
 import com.example.administrator.learnandbase.util.AbTaskItemHelper
 import com.example.administrator.smartschool.util.Logger
@@ -56,33 +56,25 @@ class LearnAbAc2 : BaseAbAc() {
         val list = arrayOf("111", "112", "121").map {
             AbMenuItem(it)
         }
-        mListView.adapter = LVAdapter0(self, list)
+        mAbPullListView.adapter = LVAdapter0(self, list)
         //打开关闭下拉刷新加载更多功能
-        mListView.setPullRefreshEnable(true)
-        mListView.setPullLoadEnable(true)
+        AbPullListViewHelper.setEnable(mAbPullListView)
 
-        //设置进度条的样式
-        mListView.headerView.setHeaderProgressBarDrawable(this.resources.getDrawable(R.drawable.progress_circular))
-        mListView.footerView.setFooterProgressBarDrawable(this.resources.getDrawable(R.drawable.progress_circular))
-
-        mListView.setAbOnListViewListener(object : AbOnListViewListener {
-            override fun onRefresh() {
-                AbTaskItemHelper.executeNullAbTaskItemLast(1000, {
-                    mListView.stopRefresh()
-                })
-            }
-
-            override fun onLoadMore() {
-                AbTaskItemHelper.executeNullAbTaskItemLast(1000, {
-                    mListView.stopLoadMore()
-                })
-            }
-
-        })
+        AbPullListViewHelper.setAbOnListViewListener(mAbPullListView,
+                onRefresh = {
+                    AbTaskItemHelper.executeNullAbTaskItemLast(update = {
+                        mAbPullListView.stopRefresh()
+                    })
+                },
+                onLoadMore = {
+                    AbTaskItemHelper.executeNullAbTaskItemLast(update = {
+                        mAbPullListView.stopLoadMore()
+                    })
+                }
+        )
     }
 
     override fun initListener() {
-        AbPullViewHelper.setHeaderProgressBarDrawable(mPullView, self)
         AbPullViewHelper.setAbOnRefreshListener(mPullView, AbTaskItemHelper.getAbTaskItem(
                 get = {
                     testDB()

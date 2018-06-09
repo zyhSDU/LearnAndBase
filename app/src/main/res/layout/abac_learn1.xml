@@ -1,8 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:orientation="vertical"
-    android:layout_height="fill_parent">
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:context=".ac.LearnAbAc1"
+	android:layout_width="fill_parent"
+	android:orientation="vertical"
+	android:layout_height="fill_parent">
 
     <LinearLayout 
         android:paddingRight="20dip"

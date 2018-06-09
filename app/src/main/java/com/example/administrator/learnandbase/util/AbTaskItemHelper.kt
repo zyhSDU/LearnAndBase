@@ -21,20 +21,9 @@ import com.ab.task.*
  */
 
 object AbTaskItemHelper {
-    val abTaskPool = AbTaskPool.getInstance()!!
+    private val abTaskPool = AbTaskPool.getInstance()
 
-    fun getAbTaskItemExecutor(int: Int = 3): Any {
-        return when (int) {
-            0 -> AbThread()
-            1 -> AbTask()
-            2 -> AbTaskQueue()
-            else -> {
-                abTaskPool
-            }
-        }
-    }
-
-    fun getAbTaskItem(update: () -> Unit = {}, get: () -> Unit={}): AbTaskItem {
+    fun getAbTaskItem(update: () -> Unit = {}, get: () -> Unit = {}): AbTaskItem {
         val abTaskItem = AbTaskItem()
         abTaskItem.listener = object : AbTaskListener() {
             override fun update() {
@@ -48,17 +37,20 @@ object AbTaskItemHelper {
         return abTaskItem
     }
 
-    private fun execute(abTaskItem: AbTaskItem) {
+    fun execute(abTaskItem: AbTaskItem) {
         abTaskPool.execute(abTaskItem)
     }
 
-    fun executeNullAbTaskItemLast(millis: Long, update: () -> Unit = {}) {
-        execute(getAbTaskItem(update, get = {
+    fun execute(update: () -> Unit = {}, get: () -> Unit = {}) {
+        execute(getAbTaskItem(update, get))
+    }
+
+    fun executeNullAbTaskItemLast(millis: Long = 1000, update: () -> Unit = {}) {
+        execute(update, get = {
             try {
                 Thread.sleep(millis)
-                //.这里是任务执行的过程
             } catch (e: Exception) {
             }
-        }))
+        })
     }
 }

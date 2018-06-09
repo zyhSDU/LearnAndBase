@@ -13,7 +13,8 @@ object AbPullViewHelper {
     fun setHeaderProgressBarDrawable(
             abPullView: AbPullView,
             context: Context,
-            resId: Int = R.drawable.progress_circular) {
+            resId: Int = R.drawable.progress_circular
+    ) {
         abPullView.headerView.setHeaderProgressBarDrawable(context.resources.getDrawable(resId))
     }
 
@@ -25,7 +26,7 @@ object AbPullViewHelper {
      */
     fun setAbOnRefreshListener(abPullView: AbPullView, abTaskItem: AbTaskItem) {
         abPullView.setAbOnRefreshListener({
-            AbTaskItemHelper.abTaskPool.execute(abTaskItem)
+            AbTaskItemHelper.execute(abTaskItem)
         })
     }
 }
