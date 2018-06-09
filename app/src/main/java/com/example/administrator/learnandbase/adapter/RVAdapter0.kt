@@ -24,18 +24,36 @@ class RVAdapter0(context: Context, arrayList: List<Any>) : BaseRVAdapter(context
         val string = arrOfData[position] as String
         val button = holder.arrOfView[0] as Button
         button.text = string
-        button.setOnClickListener {
-            when (position) {
-                0 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemHideAbTitleBar)
-                1 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemShowAbTitleBar)
-                2 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemHideRightPartOfAbTitleBar)
-                3 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemShowRightPartOfAbTitleBar0)
-                4 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemChangeAbTitleBar)
-                5 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemTransparentBackgroundOfAbTitleBar)
-                6 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemHideDropDownOfAbTitleBar)
-                7 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemShowDropDownOfAbTitleBar0)
-                8 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemHideAbBottomBar)
-                9 -> learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemShowAbBottomBar0)
+        when (position) {
+            0 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemHideAbTitleBar)
+            }
+            1 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemShowAbTitleBar)
+            }
+            2 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemHideRightPartOfAbTitleBar)
+            }
+            3 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemShowRightPartOfAbTitleBar0)
+            }
+            4 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemChangeAbTitleBar)
+            }
+            5 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemTransparentBackgroundOfAbTitleBar)
+            }
+            6 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemHideDropDownOfAbTitleBar)
+            }
+            7 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemShowDropDownOfAbTitleBar0)
+            }
+            8 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemHideAbBottomBar)
+            }
+            9 -> button.setOnClickListener {
+                learnAbActivity0.abTaskPool.execute(learnAbActivity0.abTaskItemShowAbBottomBar0)
             }
         }
     }

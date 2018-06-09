@@ -15,13 +15,13 @@ class LearnAbAc1 : BaseAbAc(), View.OnClickListener {
 
     override fun initView() {
     }
+
     override fun initListener() {
     }
 
     @SuppressLint("InflateParams")
-    private var view = mInflater.inflate(R.layout.demo_text, null)
-
     override fun onClick(v: View?, id: Int) {
+        val view = mInflater.inflate(R.layout.demo_text, null)
         when (id) {
             R.id.but_0 -> showProgressDialog()
             R.id.but_1 -> showToast("Toast")
@@ -32,5 +32,5 @@ class LearnAbAc1 : BaseAbAc(), View.OnClickListener {
                 showToast("���ȷ��")
             }
         }
-    }////////////////////////////543435434333
+    }
 }
