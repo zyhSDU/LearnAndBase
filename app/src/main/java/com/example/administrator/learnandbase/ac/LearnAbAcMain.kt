@@ -23,7 +23,8 @@ class LearnAbAcMain : BaseAbAc() {
             LearnAbAc0::class.java,
             LearnAbAc1::class.java,
             LearnAbAc2::class.java,
-            LearnAbAc3::class.java
+            LearnAbAc3::class.java,
+            LearnAbAc4::class.java
     ).map { it }
 
     override fun initView() {

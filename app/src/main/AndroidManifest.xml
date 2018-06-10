@@ -20,6 +20,7 @@
         <activity android:name=".ac.LearnAbAc1"/>
         <activity android:name=".ac.LearnAbAc2"/>
         <activity android:name=".ac.LearnAbAc3"/>
+        <activity android:name=".ac.LearnAbAc4" />
     </application>
 
 </manifest>
