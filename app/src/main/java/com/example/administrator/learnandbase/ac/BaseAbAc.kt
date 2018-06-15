@@ -15,17 +15,12 @@ abstract class BaseAbAc : AbActivity(), UiOperation {
         get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
         setAbContentView(layoutResId)
-        initPermission()
-        initData()
         initView()
         Utils.setButtonOnClickListener(findViewById<View>(android.R.id.content), this)//Activity的根View
-        initListener()
     }
 
-    open fun initPermission() {}
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_back -> finish()

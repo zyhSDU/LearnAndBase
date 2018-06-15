@@ -1,6 +1,7 @@
 package com.example.administrator.learnandbase.util
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -18,7 +19,10 @@ import com.example.administrator.learnandbase.adapter.RVAdapter2
  */
 
 object AbTitleBarHelper {
-    fun initAbTitleBar(abTitleBar: AbTitleBar, titleText: String, titleBarBackgroundId: Int, logoId: Int, left: Int, top: Int, right: Int, bottom: Int) {
+    fun initAbTitleBar(abTitleBar: AbTitleBar,
+                       titleText: String,
+                       titleBarBackgroundId: Int,
+                       logoId: Int, left: Int, top: Int, right: Int, bottom: Int) {
         abTitleBar.clearRightView()
         abTitleBar.setTitleText(titleText)
         abTitleBar.setTitleBarBackground(titleBarBackgroundId)
@@ -57,16 +61,22 @@ object AbTitleBarHelper {
         }
     }
 
-    fun hideAbTitleBar(abTitleBar: AbTitleBar) {
-        abTitleBar.visibility = View.GONE
+    val hideAbTitleBar = { abTitleBar: AbTitleBar ->
+        {
+            abTitleBar.visibility = View.GONE
+        }
     }
 
-    fun showAbTitleBar(abTitleBar: AbTitleBar) {
-        abTitleBar.visibility = View.VISIBLE
+    val showAbTitleBar = { abTitleBar: AbTitleBar ->
+        {
+            abTitleBar.visibility = View.VISIBLE
+        }
     }
 
-    fun hideRightPartOfAbTitleBar(abTitleBar: AbTitleBar) {
-        abTitleBar.clearRightView()
+    val hideRightPartOfAbTitleBar = { abTitleBar: AbTitleBar ->
+        {
+            abTitleBar.clearRightView()
+        }
     }
 
     fun showRightPartOfAbTitleBar(abTitleBar: AbTitleBar, vararg views: View) {
@@ -75,32 +85,40 @@ object AbTitleBarHelper {
     }
 
     @SuppressLint("InflateParams")
-    fun showRightPartOfAbTitleBar0(abTitleBar: AbTitleBar, abActivity: AbActivity) {
-        abTitleBar.clearRightView()
-        val views = ArrayList<View>()
-        val view0 = abActivity.mInflater.inflate(R.layout.more_but, null)
-        val view1 = abActivity.mInflater.inflate(R.layout.app_btn, null)
-        val button0 = view0.findViewById<Button>(R.id.moreBtn)
-        val button1 = view1.findViewById<Button>(R.id.appBtn)
-        button0.setOnClickListener { abActivity.showToast("点击") }
-        button1.setOnClickListener { abActivity.showToast("继续点击") }
-        views.add(view0)
-        views.add(view1)
-        views.map { abTitleBar.addRightView(it) }
+    val showRightPartOfAbTitleBar0 = { abTitleBar: AbTitleBar, abActivity: AbActivity ->
+        {
+            abTitleBar.clearRightView()
+            val views = ArrayList<View>()
+            val view0 = abActivity.mInflater.inflate(R.layout.more_but, null)
+            val view1 = abActivity.mInflater.inflate(R.layout.app_btn, null)
+            val button0 = view0.findViewById<Button>(R.id.moreBtn)
+            val button1 = view1.findViewById<Button>(R.id.appBtn)
+            button0.setOnClickListener { abActivity.showToast("点击") }
+            button1.setOnClickListener { abActivity.showToast("继续点击") }
+            views.add(view0)
+            views.add(view1)
+            views.map { abTitleBar.addRightView(it) }
+            val a = 1//占位保平安
+        }
     }
 
-    @SuppressLint("InflateParams")
-    fun changeAbTitleBar(abTitleBar: AbTitleBar, abActivity: AbActivity) {
-        initAbTitleBar1(abTitleBar, abActivity)
+    val changeAbTitleBar = { abTitleBar: AbTitleBar, abActivity: AbActivity ->
+        {
+            initAbTitleBar1(abTitleBar, abActivity)
+        }
     }
 
-    fun transparentBackgroundOfAbTitleBar(abTitleBar: AbTitleBar) {
-        abTitleBar.setTitleBarBackgroundColor(Color.TRANSPARENT)
+    val transparentBackgroundOfAbTitleBar = { abTitleBar: AbTitleBar ->
+        {
+            abTitleBar.setTitleBarBackgroundColor(Color.TRANSPARENT)
+        }
     }
 
-    fun hideDropDownOfAbTitleBar(abTitleBar: AbTitleBar) {
-        abTitleBar.setTitleTextBackgroundDrawable(null)
-        abTitleBar.setTitleTextOnClickListener(null)
+    val hideDropDownOfAbTitleBar = { abTitleBar: AbTitleBar ->
+        {
+            abTitleBar.setTitleTextBackgroundDrawable(null)
+            abTitleBar.setTitleTextOnClickListener(null)
+        }
     }
 
     @SuppressLint("InflateParams")
@@ -114,13 +132,16 @@ object AbTitleBarHelper {
         abTitleBar.setTitleTextDropDown(view0)
     }
 
-    @SuppressLint("InflateParams")
-    fun showDropDownOfAbTitleBar0(abTitleBar: AbTitleBar, abActivity: AbActivity) {
-        showDropDownOfAbTitleBar(abTitleBar, abActivity, arrayOf("aa", "bb", "cc", "dd"))
+    val showDropDownOfAbTitleBar0 = { abTitleBar: AbTitleBar, abActivity: AbActivity ->
+        {
+            showDropDownOfAbTitleBar(abTitleBar, abActivity, arrayOf("aa", "bb", "cc", "dd"))
+        }
     }
 
-    fun hideAbBottomBar(abBottomBar: AbBottomBar) {
-        abBottomBar.visibility = View.GONE
+    val hideAbBottomBar = { abBottomBar: AbBottomBar ->
+        {
+            abBottomBar.visibility = View.GONE
+        }
     }
 
     @SuppressLint("InflateParams")
@@ -144,7 +165,13 @@ object AbTitleBarHelper {
         }
     }
 
-    fun showAbBottomBar0(abBottomBar: AbBottomBar, abActivity: AbActivity) {
-        showAbBottomBar(abBottomBar, abActivity, arrayOf("分享", "收藏", "好评", "搜索"))
+//    fun showAbBottomBar0(abBottomBar: AbBottomBar, abActivity: AbActivity) {
+//        showAbBottomBar(abBottomBar, abActivity, arrayOf("分享", "收藏", "好评", "搜索"))
+//    }
+
+    val showAbBottomBar0 = { abBottomBar: AbBottomBar, abActivity: AbActivity ->
+        {
+            showAbBottomBar(abBottomBar, abActivity, arrayOf("分享", "收藏", "好评", "搜索"))
+        }
     }
 }

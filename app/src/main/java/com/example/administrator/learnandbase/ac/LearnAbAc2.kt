@@ -1,8 +1,6 @@
 package com.example.administrator.learnandbase.ac
 
-import android.view.View
 import com.ab.global.AbMenuItem
-import com.ab.view.listener.AbOnListViewListener
 import com.example.administrator.learnandbase.R
 import com.example.administrator.learnandbase.adapter.LVAdapter0
 import com.example.administrator.learnandbase.bean.LocalUser
@@ -18,16 +16,11 @@ import kotlinx.android.synthetic.main.abac_learn2.*
  */
 
 class LearnAbAc2 : BaseAbAc() {
-    override fun getLayoutResId(): Int {
-        return R.layout.abac_learn2
-    }
+    override val layoutResId: Int
+        get() = R.layout.abac_learn2
 
     //初始化数据库操作实现类
     private var userDao = LocalUserDao(self)
-
-    override fun initData() {
-
-    }
 
     private fun testDB() {
         //(1)获取数据库
@@ -72,9 +65,7 @@ class LearnAbAc2 : BaseAbAc() {
                     })
                 }
         )
-    }
 
-    override fun initListener() {
         AbPullViewHelper.setAbOnRefreshListener(mPullView, AbTaskItemHelper.getAbTaskItem(
                 get = {
                     testDB()
@@ -83,9 +74,5 @@ class LearnAbAc2 : BaseAbAc() {
                     mPullView.stopRefresh()
                 }
         ))
-    }
-
-    override fun onClick(v: View, id: Int) {
-
     }
 }

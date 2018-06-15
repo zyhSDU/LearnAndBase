@@ -6,21 +6,11 @@ import com.example.administrator.learnandbase.R
 import android.view.View
 
 class LearnAbAc1 : BaseAbAc(), View.OnClickListener {
-    override fun getLayoutResId(): Int {
-        return R.layout.abac_learn1
-    }
-
-    override fun initData() {
-    }
-
-    override fun initView() {
-    }
-
-    override fun initListener() {
-    }
+    override val layoutResId: Int
+        get() = R.layout.abac_learn1
 
     @SuppressLint("InflateParams")
-    override fun onClick(v: View?, id: Int) {
+    override fun onClick(v: View, id: Int) {
         val view = mInflater.inflate(R.layout.demo_text, null)
         when (id) {
             R.id.but_0 -> showProgressDialog()

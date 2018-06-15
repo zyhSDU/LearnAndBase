@@ -1,27 +1,19 @@
 package com.example.administrator.learnandbase.ac
 
 import android.view.Gravity
-import android.view.View
 import android.widget.GridView
 import com.example.administrator.learnandbase.R
-import kotlinx.android.synthetic.main.abac_learn3.*
-import com.ab.view.listener.AbOnListViewListener
 import com.example.administrator.learnandbase.util.AbPullGridViewHelper
 import com.example.administrator.learnandbase.util.AbTaskItemHelper
-
+import kotlinx.android.synthetic.main.abac_learn3.*
 
 /**
  * Created by Administrator on 2018/6/4 0004.
  */
 
 class LearnAbAc3 : BaseAbAc() {
-    override fun getLayoutResId(): Int {
-        return R.layout.abac_learn3
-    }
-
-    override fun initData() {
-
-    }
+    override val layoutResId: Int
+        get() = R.layout.abac_learn3
 
     override fun initView() {
         AbPullGridViewHelper.setEnable(mAbPullGridView)
@@ -49,12 +41,5 @@ class LearnAbAc3 : BaseAbAc() {
                     })
                 }
         )
-    }
-
-    override fun initListener() {
-    }
-
-    override fun onClick(v: View, id: Int) {
-
     }
 }
