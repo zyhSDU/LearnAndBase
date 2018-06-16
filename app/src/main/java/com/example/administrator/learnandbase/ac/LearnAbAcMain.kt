@@ -1,5 +1,6 @@
 package com.example.administrator.learnandbase.ac
 
+import android.view.View
 import com.example.administrator.learnandbase.R
 import com.example.administrator.learnandbase.adapter.RVAdapter3
 import com.example.administrator.learnandbase.util.RecyclerViewHelper
@@ -13,6 +14,10 @@ class LearnAbAcMain : BaseAbAc() {
     override val layoutResId: Int
         get() = R.layout.abac_learn_main
 
+    override fun initOnCreate() {
+        RecyclerViewHelper.initVerticalLinearRecyclerView(rv, this, RVAdapter3(this, arrayOfClasss))
+    }
+
     val arrayOfClasss = arrayOf(
             LearnAbAc0::class.java,
             LearnAbAc1::class.java,
@@ -20,9 +25,4 @@ class LearnAbAcMain : BaseAbAc() {
             LearnAbAc3::class.java,
             LearnAbAc4::class.java
     ).map { it }
-
-    override fun initView() {
-        RecyclerViewHelper.initVerticalLinearRecyclerView(rv, self, RVAdapter3(self, arrayOfClasss))
-
-    }
 }

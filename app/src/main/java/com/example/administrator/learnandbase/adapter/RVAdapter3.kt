@@ -20,7 +20,6 @@ class RVAdapter3(context: Context, list: List<Any>) : BaseRVAdapter(context, lis
     override val arrOfResId: ArrayList<Int>
         get() = arrayListOf(R.id.tv_item_rv_3)
 
-
     override fun onBindViewHolder(holder: BaseRVAdapter.MyViewHolder, position: Int) {
         val clazz = arrOfData[position] as Class<*>
         val view = holder.arrOfView[0] as TextView

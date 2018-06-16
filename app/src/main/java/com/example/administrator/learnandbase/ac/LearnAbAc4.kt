@@ -11,7 +11,7 @@ class LearnAbAc4 : BaseAbAc() {
     override val layoutResId: Int
         get() = R.layout.abac_learn4
 
-    override fun initView() {
-        SlidingMenuHelper.test(self)
+    override fun initOnCreate() {
+        SlidingMenuHelper.test(this)
     }
 }

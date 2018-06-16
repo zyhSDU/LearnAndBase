@@ -15,9 +15,9 @@ class LearnAbAc3 : BaseAbAc() {
     override val layoutResId: Int
         get() = R.layout.abac_learn3
 
-    override fun initView() {
+    override fun initOnCreate() {
         AbPullGridViewHelper.setEnable(mAbPullGridView)
-        AbPullGridViewHelper.setProgressBarDrawable(mAbPullGridView, self)
+        AbPullGridViewHelper.setProgressBarDrawable(mAbPullGridView, this)
 
         val mGridView = mAbPullGridView.gridView
         mGridView.columnWidth = 150         //设置列的宽度..

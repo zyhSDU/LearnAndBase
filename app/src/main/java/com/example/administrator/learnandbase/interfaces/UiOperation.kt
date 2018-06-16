@@ -7,13 +7,7 @@ interface UiOperation : OnClickListener {
 
     val layoutResId: Int
 
-    fun initPermission(){}
+    fun initOnCreate() {}
 
-    fun initData(){}
-
-    fun initView(){}
-
-    fun initListener(){}
-
-    fun onClick(v: View, id: Int){}
+    fun initOnClick(view: View, id: Int = view.id) {}
 }

@@ -20,7 +20,7 @@ class LearnAbAc2 : BaseAbAc() {
         get() = R.layout.abac_learn2
 
     //初始化数据库操作实现类
-    private var userDao = LocalUserDao(self)
+    private var userDao = LocalUserDao(this)
 
     private fun testDB() {
         //(1)获取数据库
@@ -40,16 +40,16 @@ class LearnAbAc2 : BaseAbAc() {
         userDao.closeDatabase(false)
 
         userList.forEach {
-            Logger.e(self, it.toString())
+            Logger.e(this, it.toString())
         }
-        Logger.e(self, totalCount.toString())
+        Logger.e(this, totalCount.toString())
     }
 
-    override fun initView() {
+    override fun initOnCreate() {
         val list = arrayOf("111", "112", "121").map {
             AbMenuItem(it)
         }
-        mAbPullListView.adapter = LVAdapter0(self, list)
+        mAbPullListView.adapter = LVAdapter0(this, list)
         //打开关闭下拉刷新加载更多功能
         AbPullListViewHelper.setEnable(mAbPullListView)
 

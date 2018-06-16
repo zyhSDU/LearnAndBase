@@ -1,5 +1,6 @@
 package com.example.administrator.learnandbase.util
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
@@ -13,26 +14,32 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.Toast
-
 import com.example.administrator.learnandbase.interfaces.Constants
 import com.example.administrator.smartschool.util.Logger
-
-import java.util.Calendar
+import java.util.*
 
 object Utils {
 
-    fun setButtonOnClickListener(view: View, listener: OnClickListener) {
-        if (view is Button || view is ImageButton) {
+    /**
+     * 递归，优秀
+     */
+    fun setOnClickListener(view: View, listener: OnClickListener) {
+        if (view is ViewGroup) {
+            (0 until view.childCount)
+                    .map { view.getChildAt(it) }
+                    .forEach { setOnClickListener(it, listener) }
+        }else{
             view.setOnClickListener(listener)
-        } else if (view is ViewGroup) {
-            for (i in 0 until view.childCount) {
-                val child = view.getChildAt(i)
-                setButtonOnClickListener(child, listener)
-            }
         }
+    }
+
+    /**
+     * @see setOnClickListener
+     */
+
+    fun setAllOnClickListener(activity: Activity,listener: OnClickListener){
+        setOnClickListener(activity.findViewById<View>(android.R.id.content), listener)//Activity的根View
     }
 
     fun showToast(context: Context, text: String) {
@@ -52,12 +59,10 @@ object Utils {
         return windowManager.defaultDisplay?.height ?: 0
     }
 
-
     fun printCursor(cursor: Cursor?) {
         if (cursor == null) {
             return
         }
-
         Logger.i(Utils::class.java, "共有" + cursor.count + "条数据")
         // 遍历所有的行
         while (cursor.moveToNext()) {
@@ -79,13 +84,12 @@ object Utils {
         return DateFormat.format(inFormat, calendar.time)
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     fun dynamicPermission(activity: Activity, vararg permissions: String) {//例子：Manifest.permission.CALL_PHONE
         if (Build.VERSION.SDK_INT >= 23) {
-            for (permission in permissions) {
-                if (ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(activity, arrayOf(permission), 1)
-                }
-            }
+            permissions
+                    .filter { ContextCompat.checkSelfPermission(activity, it) != PackageManager.PERMISSION_GRANTED }
+                    .forEach { ActivityCompat.requestPermissions(activity, arrayOf(it), 1) }
         }
     }
 }

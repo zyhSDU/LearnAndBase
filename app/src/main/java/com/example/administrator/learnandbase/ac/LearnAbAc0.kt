@@ -18,47 +18,32 @@ class LearnAbAc0 : BaseAbAc() {
     override val layoutResId: Int
         get() = R.layout.abac_learn0
 
-    fun getAbTaskItem(update: () -> Unit): AbTaskItem {
-        return AbTaskItemHelper.getAbTaskItem(update)
+    override fun initOnCreate() {
+        val list = ArrayList<Bean0>()
+        val rVAdapter0 = RVAdapter0(this, list)
+        RecyclerViewHelper.initVerticalLinearRecyclerView(rv, this, rVAdapter0)
+        AbTitleBarHelper.initAbTitleBar0(mAbTitleBar, this)
+
+        list.add(Bean0("隐藏标题栏", execute(getAbTaskItem(AbTitleBarHelper.hideAbTitleBar(mAbTitleBar)))))
+        list.add(Bean0("显示标题栏", execute(getAbTaskItem(AbTitleBarHelper.showAbTitleBar(mAbTitleBar)))))
+        list.add(Bean0("隐藏标题栏右侧", execute(getAbTaskItem(AbTitleBarHelper.hideRightPartOfAbTitleBar(mAbTitleBar)))))
+        list.add(Bean0("显示标题栏右侧", execute(getAbTaskItem(AbTitleBarHelper.showRightPartOfAbTitleBar0(mAbTitleBar, this)))))
+        list.add(Bean0("变换标题栏", execute(getAbTaskItem(AbTitleBarHelper.changeAbTitleBar(mAbTitleBar, this)))))
+        list.add(Bean0("透明背景", execute(getAbTaskItem(AbTitleBarHelper.transparentBackgroundOfAbTitleBar(mAbTitleBar)))))
+        list.add(Bean0("隐藏标题栏下拉", execute(getAbTaskItem(AbTitleBarHelper.hideDropDownOfAbTitleBar(mAbTitleBar)))))
+        list.add(Bean0("显示标题栏下拉", execute(getAbTaskItem(AbTitleBarHelper.showDropDownOfAbTitleBar0(mAbTitleBar, this)))))
+        list.add(Bean0("隐藏副标题栏", execute(getAbTaskItem(AbTitleBarHelper.hideAbBottomBar(mAbBottomBar)))))
+        list.add(Bean0("显示副标题栏", execute(getAbTaskItem(AbTitleBarHelper.showAbBottomBar0(mAbBottomBar, this)))))
     }
 
-    override fun initView() {
-        val abTaskPool = AbTaskPool.getInstance()!!
-        val list = ArrayList<Bean0>()
+    val abTaskPool = AbTaskPool.getInstance()!!
+    val execute = { abTaskItem: AbTaskItem ->
+        {
+            abTaskPool.execute(abTaskItem)
+        }
+    }
 
-        list.add(Bean0("隐藏标题栏", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.hideAbTitleBar(mAbTitleBar)))
-        }))
-        list.add(Bean0("显示标题栏", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.showAbTitleBar(mAbTitleBar)))
-        }))
-        list.add(Bean0("隐藏标题栏右侧", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.hideRightPartOfAbTitleBar(mAbTitleBar)))
-        }))
-        list.add(Bean0("显示标题栏右侧", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.showRightPartOfAbTitleBar0(mAbTitleBar,self)))
-        }))
-        list.add(Bean0("变换标题栏", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.changeAbTitleBar(mAbTitleBar, self)))
-        }))
-        list.add(Bean0("透明背景", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.transparentBackgroundOfAbTitleBar(mAbTitleBar)))
-        }))
-        list.add(Bean0("隐藏标题栏下拉", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.hideDropDownOfAbTitleBar(mAbTitleBar)))
-        }))
-        list.add(Bean0("显示标题栏下拉", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.showDropDownOfAbTitleBar0(mAbTitleBar, self)))
-        }))
-        list.add(Bean0("隐藏副标题栏", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.hideAbBottomBar(mAbBottomBar)))
-        }))
-        list.add(Bean0("显示副标题栏", {
-            abTaskPool.execute(getAbTaskItem(AbTitleBarHelper.showAbBottomBar0(mAbBottomBar, self)))
-        }))
-        val rVAdapter0 = RVAdapter0(self, list)
-
-        RecyclerViewHelper.initVerticalLinearRecyclerView(rv, self, rVAdapter0)
-        AbTitleBarHelper.initAbTitleBar0(mAbTitleBar, self)
+    fun getAbTaskItem(update: () -> Unit): AbTaskItem {
+        return AbTaskItemHelper.getAbTaskItem(update)
     }
 }

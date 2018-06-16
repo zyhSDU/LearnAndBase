@@ -35,7 +35,7 @@ object AbTitleBarHelper {
     fun initAbTitleBar0(abTitleBar: AbTitleBar, abActivity: AbActivity) {
         initAbTitleBar(
                 abTitleBar,
-                "SmartSchool",
+                abActivity.javaClass.simpleName,
                 R.drawable.top_bg,
                 R.drawable.button_selector_back,
                 10, 0, 0, 0)
